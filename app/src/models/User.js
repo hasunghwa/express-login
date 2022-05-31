@@ -13,11 +13,11 @@ class User {
 
     if (id) {
       if (id === body.id && psword === body.psword) {
-        return { sucess: true };
+        return { success: true };
       }
-      return { sucess: false, msg: "비밀번호가 틀렸습니다."}; 
+      return { success: false, msg: "비밀번호가 틀렸습니다."}; 
     }
-    return { sucess: false, msg: "존재하지 않는 아이디입니다."};
+    return { success: false, msg: "존재하지 않는 아이디입니다."};
   }
 }
 
