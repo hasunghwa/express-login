@@ -3,22 +3,22 @@
 const logger = require("../../config/logger");
 const User = require("../../models/User");
 
-const output = {
-  home: (req, res) => {
-    logger.info(`GET / 304 "홈 화면으로 이동"`);
-    res.render("home/index");
-  },
+// const output = {
+//   home: (req, res) => {
+//     logger.info(`GET / 304 "홈 화면으로 이동"`);
+//     res.render("home/index");
+//   },
 
-  login: (req, res) => {
-    logger.info(`GET / 304 "로그인 화면으로  이동"`);
-    res.render("home/login");
-  },
+//   login: (req, res) => {
+//     logger.info(`GET / 304 "로그인 화면으로  이동"`);
+//     res.render("home/login");
+//   },
 
-  register: (req, res) => {
-    logger.info(`GET / 304 "회원가입 화면으로 이동"`);
-    res.render("home/register");
-  }
-};
+//   register: (req, res) => {
+//     logger.info(`GET / 304 "회원가입 화면으로 이동"`);
+//     res.render("home/register");
+//   }
+// };
 
 const process = {
   login: async (req, res) => {
@@ -51,7 +51,7 @@ const process = {
 };
 
 module.exports = {
-  output,
+  //output,
   process,
 };
 
