@@ -1,6 +1,7 @@
 "use strict";
 
 const UserStorage = require("./UserStorage");
+const hash = require("../config/crypto");
 
 class User {
   constructor(body) {
@@ -11,9 +12,11 @@ class User {
     const client = this.body;
     try {
       const user = await UserStorage.getUserInfo(client.id);
-
+      
+      const password = await hash.makePasswordHashed(user.salt, client.psword);
+      
       if (user) {
-        if (user.id === client.id && user.psword === client.psword) {
+        if (user.id === client.id && user.psword === password) {
           return { success: true };
         }
         return { success: false, msg: "비밀번호가 틀렸습니다." };

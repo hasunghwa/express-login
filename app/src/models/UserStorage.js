@@ -1,7 +1,7 @@
 "use strict";
 
 const db = require("../config/db");
-const encryption = require("../config/crypto");
+const hash = require("../config/crypto");
 class UserStorage {
   // static getUsers(isAll, ...fields) { // 인자로 넘겨받은 필드만
   // }
@@ -18,9 +18,7 @@ class UserStorage {
   }
 
   static async save(userInfo) {     
-    const { password, salt } = await encryption(
-      userInfo.psword
-    );
+    const { password, salt } = await hash.createHashedPassword(userInfo.psword);
 
     return new Promise((resolve, reject) => {
       const query = "INSERT INTO users(id, name, psword, salt) VALUES(?, ?, ?, ?);";
