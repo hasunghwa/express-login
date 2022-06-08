@@ -21,9 +21,17 @@ const User = require("../../models/User");
 // };
 
 const process = {
+  loginCheck: (req, res) => {
+    if (req.session.isLogined) {
+      res.send({ isLogined: true, loginData: req.session.uid });
+    } else {
+      res.send({ isLogined: false });
+    }
+  },
+
   login: async (req, res) => {
     const user = new User(req.body);
-    const response = await user.login();
+    const response = await user.login(req, res);
     
     const url = {
       method: "POST",
