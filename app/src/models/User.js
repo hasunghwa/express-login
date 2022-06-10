@@ -19,7 +19,11 @@ class User {
           client.psword
         );
         if (user.id === client.id && user.psword === password) {
-          req.session.uid = user.id;
+          req.session.user = {
+            id: user.id,
+            psword: user.psword,
+            name: user.name,
+          };
           req.session.isLogined = true;
           return { success: true };
         }
